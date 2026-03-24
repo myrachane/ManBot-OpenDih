@@ -9,10 +9,19 @@ def getMemoryKey(message):
     return f"{message.channel.id}:{message.author.id}"
 
 
+# Backwards-compatible aliases (preserve original naming convention)
+def GetMemoryKey(message):
+    return getMemoryKey(message)
+
+
 def cleanMention(content, bot_id):
     """Remove bot mentions from message content"""
     content = content.replace(f"<@{bot_id}>", "").replace(f"<@!{bot_id}>", "")
     return content.strip()
+
+
+def CleanMention(content, bot_id):
+    return cleanMention(content, bot_id)
 
 
 def replyToBot(message, bot_user):
